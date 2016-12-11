@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, InputNumber } from 'antd';
+import { Card, InputNumber, Input, Row, Col } from 'antd';
 
 const InvoiceNumber = ({ invoiceNumber, onInvoiceNumberChange }) => {
   return (
@@ -13,18 +13,20 @@ export class ToDetails extends React.Component {
     super(props);
   }
 
-  invoiceNumber(number, onInvoiceNumberChange) {
+  invoiceNumber(invoiceNumber, onInvoiceNumberChange) {
     return (
       <div>
-        Invoice Number: <InvoiceNumber number={number} onInvoiceNumberChange={onInvoiceNumberChange} />
+        Invoice Number: <InvoiceNumber invoiceNumber={invoiceNumber} onInvoiceNumberChange={onInvoiceNumberChange} />
       </div>
     )
   }
 
   render() {
-    const { invoiceNumber, onInvoiceNumberChange } = this.props
+    const { invoiceNumber, onInvoiceNumberChange } = this.props;
     return (
-      <Card title="To" loading extra={this.invoiceNumber(invoiceNumber, onInvoiceNumberChange)}>
+      <Card title="To" extra={this.invoiceNumber(invoiceNumber, onInvoiceNumberChange)}>
+        <Input placeholder="Customer Name" style={{ marginBottom: '16px' }} />
+        <Input type="textarea" rows={2} placeholder="Customer Address" />
       </Card>
     )
   }

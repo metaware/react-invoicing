@@ -5,7 +5,7 @@ let numeral = require('numeral');
 let uuid = require('uuid');
 
 const initialState = Map({
-  number: 0,
+  number: 1,
   currency: 'USD',
   subTotal: numeral(0),
   taxPercentage: numeral(0),
@@ -99,9 +99,7 @@ let invoicingApp = function(state = {}, action) {
     taxPercentage: taxPercentageReducer(state.taxPercentage, action),
     lineItems: lineItemsReducer(state.lineItems, action),
     grandTotal: numeral(0),
-    number: function(state = 0, action) {
-      return action.number || 0
-    }(state.number, action),
+    number: 1,
     currency: function(state = 'USD', action) {
       return state
     }(state.currency, action),
